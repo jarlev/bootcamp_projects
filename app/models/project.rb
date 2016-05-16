@@ -1,8 +1,8 @@
 class Project < ActiveRecord::Base
 
 
-  has_many :users
   has_many :persons
+  has_many :users, through: :persons
   has_many :tasks
   has_many :notes
 
