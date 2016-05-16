@@ -1,0 +1,14 @@
+<h2>New Project</h2>
+
+<%= form_for @project do |f| %>
+	<%= f.label :name %>
+	<%= f.text_area :name %>
+	<br>
+	<%= f.label :due_date %>
+	<%= f.date_select :due_date %>
+	<br>
+	<%= f.label :repo_name %>
+	<%= f.text_area :repo_name %>
+	<br>
+	<%= f.submit "Create project" %>
+<% end %>
