@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'notes/index'
+
+  get 'tasks/index'
+
+  get 'projects/index'
+
   devise_for :users
   root "home#pages"
   
