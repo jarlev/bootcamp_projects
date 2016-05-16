@@ -1,8 +1,14 @@
 <%= @project.name %><br>
 
+<h1>New Task</h1>
+
+<div id="tasks_form">
+<%= render 'tasks/form' %>
+</div>
+
 <h2>New Note</h2>
 
-<%= form_for @note do |f| %>
+<%= form_for Note.new do |f| %>
 	<%= f.label :description %>
 	<%= f.text_area :description %>
 	<br>

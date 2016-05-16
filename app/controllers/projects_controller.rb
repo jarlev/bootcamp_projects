@@ -11,8 +11,8 @@ class ProjectsController < ApplicationController
 
   def create
   	@project = Project.new(project_params)
-  	@project.update_attribute("user", current_user)
   	if @project.save!
+  		current_user.persons.create project: @project
   		flash[:success] = "Project created successfully"
   		render :show
   	else
