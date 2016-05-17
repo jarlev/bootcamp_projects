@@ -22,9 +22,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-  	@project = Project.find params[:id]
-    @tasks = @project.task_lists
-    @notes = @project.notes
+    load_show_content
   end
 
   def edit
@@ -72,10 +70,14 @@ class ProjectsController < ApplicationController
   end
 
   def load_and_render_show
+    load_show_content
+    render :show
+  end
+
+  def load_show_content
     @project = Project.find params[:id]
     @tasks = @project.task_lists
     @notes = @project.notes
-    render :show
   end
 
 end
