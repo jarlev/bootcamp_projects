@@ -1,9 +1,8 @@
 class Project < ActiveRecord::Base
 
-
-  has_many :users
-  has_many :persons
-  has_many :tasks
+  has_many :people
+  has_many :users, through: :people
+  has_many :task_lists
   has_many :notes
 
 	validates :name, presence: true
