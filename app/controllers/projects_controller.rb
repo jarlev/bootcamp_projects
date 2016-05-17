@@ -23,7 +23,8 @@ class ProjectsController < ApplicationController
 
   def show
   	@project = Project.find params[:id]
-      @tasks = @project.task_lists
+    @tasks = @project.task_lists
+    @notes = @project.notes
   end
 
   def edit
@@ -46,8 +47,14 @@ class ProjectsController < ApplicationController
     @task = TaskList.new(task_params)
     @project = Project.find params[:id]
     @task.update(user: current_user, project: @project)
-    @tasks = @project.task_lists
-    render :show
+    load_and_render_show
+  end
+
+  def create_note
+    @note = Note.new(note_params)
+    @project = Project.find params[:id]
+    @note.update(user: current_user, project: @project)
+    load_and_render_show
   end
 
   private
@@ -58,6 +65,17 @@ class ProjectsController < ApplicationController
 
   def task_params
     params.require(:task_list).permit(:task_name, :task_description, :priority)
+  end
+
+  def note_params
+    params.require(:note).permit(:description)
+  end
+
+  def load_and_render_show
+    @project = Project.find params[:id]
+    @tasks = @project.task_lists
+    @notes = @project.notes
+    render :show
   end
 
 end

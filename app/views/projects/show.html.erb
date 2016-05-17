@@ -11,3 +11,13 @@
 		<%= render partial: 'tasks/task_list', locals: {task_list: @tasks} %>
 	<% end %>
 </div>
+
+<div id="notes_form">
+  <%= render 'notes/form' %>
+</div>
+
+<div id="notes">
+	<% if @notes.present? %>
+		<%= render partial: 'notes/notes', locals: {notes: @notes} %>
+	<% end %>
+</div>

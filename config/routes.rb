@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   resources :task_lists
   resources :notes
+
   resources :projects do
     member do 
       post :create_task_list
+      post :create_note
     end
   end
 
