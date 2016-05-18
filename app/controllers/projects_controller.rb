@@ -43,10 +43,17 @@ class ProjectsController < ApplicationController
      redirect_to projects_path
   end
 
+  def delete_task_list
+     @task = TaskList.find params[:task]
+     @task.destroy!
+     load_and_render_show
+  end
+
   def create_task_list
     @task = TaskList.new(task_params)
     @project = Project.find params[:id]
-    @task.update(user: current_user, project: @project)
+    user = User.find params[:task_list][:user]
+    @task.update(user: user, project: @project)
     load_and_render_show
   end
 

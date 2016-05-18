@@ -22,11 +22,13 @@
               </span> 
             <% end %>
             </td>
-            <td><%= link_to task_list_path(task), method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <span class="glyphicon glyphicon-trash">
-              </span> 
-              <% end %>
-            </td> 
+            <% if current_user == task.user %>
+	            <td><%= link_to delete_task_list_project_path(project, task: task), method: :delete, data: { confirm: 'Are you sure?' } do %>
+	              <span class="glyphicon glyphicon-trash">
+	              </span> 
+	              <% end %>
+	            </td>
+	      <% end %>
           </tr>
         <% end %>
       </tbody>

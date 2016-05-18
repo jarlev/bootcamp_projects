@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :task_lists
   resources :notes
+
   resources :projects do
     member do 
       post :create_task_list
       post :create_note
+      delete :delete_task_list
     end
   end
 

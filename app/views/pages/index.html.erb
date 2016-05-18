@@ -1,6 +1,15 @@
-<div class="jumbotron">
-  <h1>Welcome to BootCamp Projects</h1>
-  <p>Please sign in <%= link_to "here", new_user_session_path, class: "btn btn-primary btn-lg" %> </p>
-  <p>Please register <%= link_to "here", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
-</div>
+<div class="jumbotron text-center">
+  <h1>BootCamp Projects</h1><br>
+  <h3>A project management application</h3><br>
+  <% unless user_signed_in? %>
 
+    <p>Please sign in above, </p>
+    <p>Or register <%= link_to "here", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
+
+  <% else %>
+    
+    <p>Make a new <%= link_to "project", new_project_path %>!</p>  
+
+  <% end %>  
+
+</div> 

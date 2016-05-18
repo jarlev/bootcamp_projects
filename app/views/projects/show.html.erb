@@ -8,7 +8,7 @@
 
 <div id="tasks_list">
 	<% if @tasks.present? %>
-		<%= render partial: 'tasks/task_list', locals: {task_list: @tasks} %>
+		<%= render partial: 'tasks/task_list', locals: {task_list: @tasks, project: @project} %>
 	<% end %>
 </div>
 
