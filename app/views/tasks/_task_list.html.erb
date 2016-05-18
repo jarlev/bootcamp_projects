@@ -1,3 +1,34 @@
-<% task_list.each do |task| %>
-	<%= task.task_name %>
-<% end %>
+<h3><u>Open Tasks</u></h3>
+
+ <div class="table_tasks">
+   <table class="table">
+      <thead>
+        <tr>
+          <th>Task Name</th>
+          <th>Description</th>
+          <th>Priority</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% task_list.each do |task| %>
+          <tr <%= change_table_class(task) %> >
+            <td><%= task.task_name %></td>
+            <td><%= task.task_description %></td>
+            <td><%= task.priority %></td>
+            <td><%= link_to '#', method: :post, remote: true do %>
+              <span class="glyphicon glyphicon-ok">
+              </span> 
+            <% end %>
+            </td>
+            <td><%= link_to task_list_path(task), method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <span class="glyphicon glyphicon-trash">
+              </span> 
+              <% end %>
+            </td> 
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

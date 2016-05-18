@@ -11,3 +11,5 @@
 		<%= render partial: 'tasks/task_list', locals: {task_list: @tasks} %>
 	<% end %>
 </div>
+<br>
+<%= link_to 'Destroy this project', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-sm btn-danger"%>
