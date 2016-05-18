@@ -31,12 +31,6 @@ class TaskListsController < ApplicationController
     redirect_to projects_path
   end
 
-  def finish
-    @task.update_attribute(:completed, true)
-    @task.save!
-    @tasks = Task.all
-  end
-
   def destroy
      @task = TaskList.find params[:id]
      @task.destroy!

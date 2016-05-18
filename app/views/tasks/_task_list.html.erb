@@ -13,7 +13,7 @@
 
       <tbody>
         <% task_list.each do |task| %>
-          <tr <%= change_table_class(task) %> >
+          <tr>
             <td><%= task.task_name %></td>
             <td><%= task.task_description %></td>
             <td><%= task.priority %></td>

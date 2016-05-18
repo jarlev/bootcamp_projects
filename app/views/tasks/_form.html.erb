@@ -1,12 +1,15 @@
 
-
-<%= form_for TaskList.new, url: create_task_list_project_path do |f| %>
-	<%= f.label :task_name %>
-	<%= f.text_area :task_name %><br>
-	<%= f.label :task_description %>
-	<%= f.text_area :task_description %><br>
-	<%= f.label :priority %>
-	<%= f.number_field :priority, :in => 1..10 %>
-	<br>
-	<%= f.submit "Create task" %><br>
+<%= form_for TaskList.new, url: create_task_list_project_path, html: {class: "form-inline"}, class: "form-inline", remote: true do |f| %>
+  <div class="form-group">
+    <%= f.text_field :task_name, placeholder: "task", class: "form-control" %>
+  </div>
+   <div class="form-group">
+    <%= f.text_field :task_description, placeholder: "description", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.select :priority, @priorities, {prompt: "priority"}, {class: "form-control"} %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Add Task", class: "btn btn-info" %>
+  </div>
 <% end %>
