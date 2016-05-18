@@ -1,4 +1,4 @@
 <h1>Current Projects</h1>
 	<% @projects.each do |project| %>
-		<%= project.name %><br>
+		<%= link_to project.name, project_path(project) %><br>
 	<% end %>

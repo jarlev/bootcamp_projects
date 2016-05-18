@@ -14,7 +14,8 @@ class ProjectsController < ApplicationController
   	if @project.save!
   		current_user.people.create project: @project
   		flash[:success] = "Project created successfully"
-  		render :show
+      @id = @project.id
+  		redirect_to action: :index
   	else
   		flash[:error] = @project.errors.full_messages
   		redirect_to new_project_path
@@ -71,7 +72,7 @@ class ProjectsController < ApplicationController
 
   def load_and_render_show
     load_show_content
-    render :show
+    redirect_to action: :show
   end
 
   def load_show_content
