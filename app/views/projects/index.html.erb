@@ -1,11 +1,29 @@
-<h1>Current Projects</h1>
+<div class="page-header">
+  <h1>Current Projects</h1>
+</div>
 
-	<% @projects.each do |project| %>
-	  <div class="container">
-			<p>Project Name: <%= link_to project.name, project_path(project) %></p>
-			<p>Due Date: <%= project.due_date %></p>
-		  <p>Repo Name: <%= project.repo_name %></p>
-		</div>
-	<% end %>
+<div class="table_projects">
+ <table class="table">
+    <thead>
+        <tr>
+        	<th>Project Name</th>
+          <th>Due Date</th>
+          <th>Repo Name</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+       <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <td><%= link_to project.name, project_path(project)%></td>
+            <td><%= project.due_date.strftime("%B %d, %Y") %></td>
+            <td><%= project.repo_name %></td> 
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
 
 
+     
