@@ -1,26 +1,36 @@
-<%= @project.name %><br>
+<h1 style="text-align: center"><u><%= @project.name %></u></h1><br>
 
-<h1>New Task</h1>
+<h2><u>New Task</u></h2>
 
 <div id="tasks_form">
 	<%= render 'tasks/form' %>
 </div>
 
+<h3><u>Open Tasks</u></h3>
 <div id="tasks_list">
 	<% if @tasks.present? %>
 		<%= render partial: 'tasks/task_list', locals: {task_list: @tasks, project: @project} %>
 	<% end %>
 </div>
 
-<div id="notes_form">
-  <%= render 'notes/form' %>
-</div>
-
+<h4><u>Notes</u></h4>
 <div id="notes">
 	<% if @notes.present? %>
 		<%= render partial: 'notes/notes', locals: {notes: @notes} %>
 	<% end %>
 </div>
 
+<h5><u>Create new note:</u></h5>
+<div id="notes_form">
+	<%= render 'notes/form' %>
+</div>
 <br>
-<%= link_to 'Destroy this project', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-sm btn-danger"%>
+<h5><u>Project owners:</u></h5>
+<div id="user_list">
+	<%= render 'projects/user_list' %>
+</div>
+<br>
+<div id="edit_project">
+	<%= render partial: 'projects/edit', locals: {users: @users, project: @project} %>
+</div>
+

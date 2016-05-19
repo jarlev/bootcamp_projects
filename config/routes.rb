@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     member do 
       post :create_task_list
       post :create_note
+      post :assign_users
+      delete :delete_users
       delete :delete_task_list
     end
   end

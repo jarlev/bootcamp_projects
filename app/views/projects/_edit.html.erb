@@ -1,0 +1,11 @@
+<h4><small>Assign additional users to this project:</small></h4>
+	<%= form_for @project, url: assign_users_project_path(@project), method: :post, html: {class: "form-inline"}, class: "form-inline" do |f| %>
+		<div class="form-group">
+  				<%= f.select :users, options_from_collection_for_select(User.all, :id, :username), {prompt:"assign user"}, {class: "form-control"} %>
+			 </div>
+			<div class="form-group">
+  				<%= f.submit "Submit changes", class: "btn btn-info" %>
+  			</div>
+	<% end %>
+
+<%= link_to 'Destroy this project', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-sm btn-danger"%><br><br>
