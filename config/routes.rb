@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       delete :delete_users
       delete :destroy_note
       delete :delete_task_list
+      put :change_task_state
     end
   end
 

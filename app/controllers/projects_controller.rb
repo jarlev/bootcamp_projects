@@ -87,6 +87,12 @@ class ProjectsController < ApplicationController
     load_and_render_show
   end
 
+  def change_task_state
+    task = TaskList.find params[:task]
+    task.change_state
+    load_and_render_show
+  end 
+
   private
 
   def project_params
