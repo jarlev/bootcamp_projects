@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     member do 
       post :create_task_list
       post :create_note
+      delete :destroy_note
     end
   end
 

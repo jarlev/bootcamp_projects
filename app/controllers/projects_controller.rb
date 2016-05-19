@@ -55,6 +55,12 @@ class ProjectsController < ApplicationController
     load_and_render_show
   end
 
+  def destroy_note
+    @note = Note.find params[:note]
+    @note.destroy!
+    load_and_render_show
+  end
+
   private
 
   def project_params
