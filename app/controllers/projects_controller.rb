@@ -24,7 +24,8 @@ class ProjectsController < ApplicationController
 
   def show
     load_show_content
-    @priorities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    
+
   end
 
   def edit
@@ -32,9 +33,25 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    # @project = Project.find params[:id]
+    # user = User.find params[:project][:user]
+    # @project.update(user: user, project: @project)
+    # load_and_render_show
+  end
+
+  def assign_users
     @project = Project.find params[:id]
-    @project.update(project_params)
-    redirect_to projects_path
+    user = User.find params[:project][:users]
+    @project.people.create(user: user)
+    load_and_render_show
+  end
+
+  def delete_users
+    @project = Project.find params[:id]
+    user = User.find params[:user]
+    person = @project.people.where(user: user).first
+    person.destroy!
+    load_and_render_show
   end
 
   def destroy
@@ -70,6 +87,12 @@ class ProjectsController < ApplicationController
     load_and_render_show
   end
 
+  def change_task_state
+    task = TaskList.find params[:task]
+    task.change_state
+    load_and_render_show
+  end 
+
   private
 
   def project_params
@@ -93,6 +116,7 @@ class ProjectsController < ApplicationController
     @project = Project.find params[:id]
     @tasks = @project.task_lists
     @notes = @project.notes
+    @priorities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   end
 
 end

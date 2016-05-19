@@ -1,13 +1,12 @@
-<h3><u>Open Tasks</u></h3>
-
- <div class="table_tasks">
+<div class="table_tasks">
    <table class="table">
       <thead>
         <tr>
           <th>Task Name</th>
           <th>Description</th>
           <th>Priority</th>
-          <th colspan="3"></th>
+          <th>Assigned User</th>
+          <th colspan="4"></th>
         </tr>
       </thead>
 
@@ -17,10 +16,12 @@
             <td><%= task.task_name %></td>
             <td><%= task.task_description %></td>
             <td><%= task.priority %></td>
-            <td><%= link_to '#', method: :post, remote: true do %>
-              <span class="glyphicon glyphicon-ok">
-              </span> 
-            <% end %>
+            <td><%= task.user.username %></td>
+            <td><% if task.state == "accepted" %>
+                  <%= "Task accepted" %>
+                <% else %>
+                  <%= link_to find_state(task.state), change_task_state_project_path(project, task: task), method: :put, class: "btn btn-default" %>  
+                <% end %>  
             </td>
             <% if current_user == task.user %>
 	            <td><%= link_to delete_task_list_project_path(project, task: task), method: :delete, data: { confirm: 'Are you sure?' } do %>

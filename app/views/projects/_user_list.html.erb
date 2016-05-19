@@ -1,0 +1,25 @@
+<div class="table_tasks">
+   <table class="table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @project.users.each do |user| %>
+          <tr>
+            <td><%= user.username %></td>
+            <td><%= user.email %></td>
+            <td><%= link_to delete_users_project_path(@project, user: user), method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <span class="glyphicon glyphicon-trash">
+              </span> 
+              <% end %>
+	         </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
