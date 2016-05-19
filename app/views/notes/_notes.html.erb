@@ -1,5 +1,9 @@
-<% notes.each do |note| %>
-	<ul>
-		<li><%= note.description %></li>
-	</ul>
-<% end %>
+<div class="container">
+	<% notes.each do |note| %>
+		<p>Description: <%= note.description %></p>
+		<p>User that created: <%= note.user.username %></p>
+		<button type="button" class="btn btn-default">
+			<%= link_to 'Delete', destroy_note_project_path(@project, note: note), method: :delete, data: { confirm: 'Are you sure?' } %>
+		</button>
+	<% end %>
+</div>

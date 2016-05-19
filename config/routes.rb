@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       post :create_note
       post :assign_users
       delete :delete_users
+      delete :destroy_note
       delete :delete_task_list
     end
   end
