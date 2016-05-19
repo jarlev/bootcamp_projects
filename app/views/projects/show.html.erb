@@ -8,7 +8,7 @@
 
 <div id="tasks_list">
 	<% if @tasks.present? %>
-		<%= render partial: 'tasks/task_list', locals: {task_list: @tasks} %>
+		<%= render partial: 'tasks/task_list', locals: {task_list: @tasks, project: @project} %>
 	<% end %>
 </div>
 
@@ -21,3 +21,6 @@
 		<%= render partial: 'notes/notes', locals: {notes: @notes} %>
 	<% end %>
 </div>
+
+<br>
+<%= link_to 'Destroy this project', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-sm btn-danger"%>

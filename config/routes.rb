@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :task_lists
   resources :notes
 
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
       post :create_task_list
       post :create_note
       delete :destroy_note
+      delete :delete_task_list
     end
   end
 

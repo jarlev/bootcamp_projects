@@ -1,10 +1,11 @@
 <h1>Current Projects</h1>
- 
-		<% @projects.each do |project| %>
-		 <div class="container">
+
+	<% @projects.each do |project| %>
+	  <div class="container">
 			<p>Project Name: <%= link_to project.name, project_path(project) %></p>
 			<p>Due Date: <%= project.due_date %></p>
-	    <p>Repo Name: <%= project.repo_name %></p>
-	  </div>
-		<% end %>
+		  <p>Repo Name: <%= project.repo_name %></p>
+		</div>
+	<% end %>
+
 
